@@ -30,12 +30,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
     Window window(wndClass.GetClassNameW(), L"Hello", hInstance);
     window.Show(nCmdShow);
-
-    MSG msg = { 0 };
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
+    window.SetTitle(L"Hey");
+    window.RunDefaultMessageLoop();
 
     return 0;
 }
