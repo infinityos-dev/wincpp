@@ -27,12 +27,9 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow) {
     WindowClass wndClass(WindowProc, hInstance, (HBRUSH)(COLOR_WINDOW + 1));
     wndClass.Register();
-    
-    HWND hwnd = CreateWindowEx(0, wndClass.GetClassNameW(), L"White Window", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL, hInstance, NULL);
 
-    if (!hwnd) return 0;
-
-    ShowWindow(hwnd, nCmdShow);
+    Window window(wndClass.GetClassNameW(), L"Hello", hInstance);
+    window.Show(nCmdShow);
 
     MSG msg = { 0 };
     while (GetMessage(&msg, NULL, 0, 0)) {
